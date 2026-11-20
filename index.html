@@ -181,7 +181,7 @@ button.btn{background-size:300% 300%;animation:bgflow 6s ease infinite}
 
 <div id="overlay">
   <div class="big">🎁</div>
-  <h2 style="margin-top:16px">A little surprise for Teachel</h2>
+  <h2 style="margin-top:16px">A little surprise for Teachel!</h2>
   <p class="hint">Turn your sound on 🔊</p>
   <button class="btn" id="startBtn">Tap to begin ✨</button>
 </div>
@@ -232,9 +232,9 @@ button.btn{background-size:300% 300%;animation:bgflow 6s ease infinite}
     </g>
     <g class="candles">
       <rect x="135" y="62" width="10" height="32" rx="2" fill="#7fd6ff"/><rect x="165" y="56" width="10" height="38" rx="2" fill="#ffe27a"/><rect x="195" y="62" width="10" height="32" rx="2" fill="#b7f5a0"/>
-      <g class="flame"><ellipse cx="140" cy="50" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="140" cy="53" rx="3.5" ry="7" fill="#fff3a8"/></g>
-      <g class="flame"><ellipse cx="170" cy="44" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="170" cy="47" rx="3.5" ry="7" fill="#fff3a8"/></g>
-      <g class="flame"><ellipse cx="200" cy="50" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="200" cy="53" rx="3.5" ry="7" fill="#fff3a8"/></g>
+      <g class="flame"><circle cx="140" cy="50" r="20" fill="#fff" fill-opacity="0.01"/><ellipse cx="140" cy="50" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="140" cy="53" rx="3.5" ry="7" fill="#fff3a8"/></g>
+      <g class="flame"><circle cx="170" cy="44" r="20" fill="#fff" fill-opacity="0.01"/><ellipse cx="170" cy="44" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="170" cy="47" rx="3.5" ry="7" fill="#fff3a8"/></g>
+      <g class="flame"><circle cx="200" cy="50" r="20" fill="#fff" fill-opacity="0.01"/><ellipse cx="200" cy="50" rx="7" ry="12" fill="#ffb02e"/><ellipse cx="200" cy="53" rx="3.5" ry="7" fill="#fff3a8"/></g>
     </g>
     <circle class="smoke" cx="140" cy="40" r="6" fill="#fff"/><circle class="smoke" cx="170" cy="34" r="6" fill="#fff" style="animation-delay:.15s"/><circle class="smoke" cx="200" cy="40" r="6" fill="#fff" style="animation-delay:.3s"/>
     <g class="cake-text l1"><text id="cakeL1" x="170" y="252" text-anchor="middle" font-family="Pacifico,'Brush Script MT',cursive" font-size="25" fill="#fff" stroke="#e0558f" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Happy Birthday,</text></g>
@@ -262,9 +262,9 @@ button.btn{background-size:300% 300%;animation:bgflow 6s ease infinite}
 
 <script>
 /* ============ ဒီနေရာကိုပဲ ပြင်ပါ ============ */
-const TITLE   = "ပျော်ရွှင်ဖွယ် မွေးနေ့ ရက်မြတ်လေး ဖြစ်ပါစေ";
+const TITLE   = "ပျော်ရွှင်ဖွယ် မွေးနေ့ ရက်မြတ်လေး ဖြစ်ပါစေ တီချယ်";
 const TEACHER = "Tr Dr. Wityi Ei";          // ကိတ်ပေါ်မှာလည်း ဒီနာမည်ပေါ်မယ်
-const STUDENT = "Your student (add your name)";
+const STUDENT = "Tr's Thar NLT";
 
 const WISH =
 `မွေးနေ့ ရက်မြတ်မှစ၍ -
@@ -274,7 +274,7 @@ const WISH =
 တွေ့ဆုံခွင့်ရသူတိုင်း မေတ္တာစစ်တွေပါပါစေ၊
 လှမ်းသမျှ ခြေလှမ်းတိုင်း အဆင်ပြေ အောင်မြင်ခြင်းတွေနဲ့ ပြည့်နက်နေပါစေဗျ
 
-— ${Tr's Thar NLT}`;
+— ${STUDENT}`;
 
 /* Gallery ပုံတွေ – ပုံတွေကို photos ဖိုလ်ဒါထဲ 1.jpg, 2.jpg, 3.jpg … နာမည်ပေးထည့်ပြီး ပုံအရေအတွက်ကို ဒီမှာ ပြောင်းပါ */
 const PHOTO_COUNT = 39;
@@ -286,7 +286,7 @@ const CAND=n=>DIRS.flatMap(d=>EXTS.map(e=>`${d}${n}.${e}`));
 const resolved={};
 
 /* Report Card – subject / bar (%) တွေကို ဒီမှာ ပြင်ပါ */
-const SUBJECTS=[["☕","Coffee Appreciation",100],["✈️","Travel Spirit",100],["👨‍👩‍👧","Family Time",100],["🤲","Generosity",100],["❓","Surprise Questions",90]];
+const SUBJECTS=[["☕","Coffee Appreciation",100],["✈️","Travel Spirit",99],["👨‍👩‍👧","Family Time",99],["🤲","Generosity",100],["❓","Surprise Questions",95]];
 
 /* စိတ်ကြိုက် သီချင်း (mp3) ရှိရင် music/song.mp3 အဖြစ် ထည့်ပါ၊ မရှိရင် built-in သီချင်းကို သုံးမယ် */
 const SONG_FILE = "music/song.mp3";
@@ -405,7 +405,7 @@ const flames=[...document.querySelectorAll('.flame')];
 let blown=false;
 function blowOut(){
   if(blown)return;blown=true;
-  flames.forEach(f=>f.classList.add('out'));
+  flames.forEach(f=>{f.style.opacity='';f.classList.add('out')});
   cake.classList.add('blown');
   document.getElementById('wishDone').textContent='🎂 May all your wishes come true 🎂';
   burst(70);
@@ -416,18 +416,29 @@ flames.forEach(f=>f.onclick=()=>{f.classList.add('out');if(flames.every(x=>x.cla
 document.getElementById('blowBtn').onclick=async function(){
   if(blown)return;
   try{
-    const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+    const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:true}});
     stopMusic();
     this.textContent='🎤 Blow now…';
     const c=new (window.AudioContext||window.webkitAudioContext)();
-    const an=c.createAnalyser();an.fftSize=512;c.createMediaStreamSource(s).connect(an);
-    const buf=new Float32Array(an.fftSize);let hits=0;
+    if(c.state==='suspended')await c.resume();
+    const an=c.createAnalyser();an.fftSize=1024;c.createMediaStreamSource(s).connect(an);
+    const buf=new Float32Array(an.fftSize);
+    let base=0,frames=0,score=0;
+    const fl=[...document.querySelectorAll('.flame:not(.out)')];
     (function loop(){
+      if(blown){s.getTracks().forEach(t=>t.stop());c.close();return}
       an.getFloatTimeDomainData(buf);
       let sum=0;for(let i=0;i<buf.length;i++)sum+=buf[i]*buf[i];
       const rms=Math.sqrt(sum/buf.length);
-      hits=rms>.1?hits+1:Math.max(0,hits-1);
-      if(hits>10){s.getTracks().forEach(t=>t.stop());c.close();blowOut();return}
+      frames++;
+      /* ပထမ ~0.5 စက္ကန့်က ပတ်ဝန်းကျင်အသံကို အခြေခံအဖြစ်မှတ် */
+      if(frames<=30){base=Math.max(base,rms);requestAnimationFrame(loop);return}
+      const thr=Math.max(0.02,base*2.2);
+      if(rms>thr){score+=Math.min(3,rms/thr)}else{score=Math.max(0,score-.6)}
+      /* မှုတ်လေ့ရှိလေ မီးလျှံတွေ တုန်လာမယ် */
+      const lean=Math.min(1,score/14);
+      flames.forEach(f=>{if(!f.classList.contains('out'))f.style.opacity=1-lean*.45});
+      if(score>14){s.getTracks().forEach(t=>t.stop());c.close();blowOut();return}
       requestAnimationFrame(loop);
     })();
   }catch(e){
@@ -455,7 +466,7 @@ function reportCard(T){
   return `<div class="rc2"><div class="rc2-head"><span>🌸 REPORT CARD 🌸</span><small>Birthday Term</small></div>
 <div class="rc2-name"><small>Teacher</small><b>${esc(T)}</b></div>
 <div class="rc2-list">${rows}</div>
-<div class="rc2-foot">To the world, you may be just A TEACHER<br>but to your students, you are A HERO!</div>
+<div class="rc2-foot">To the world, you may be just A TEACHER<br>but to your students you are A HERO!</div>
 <div class="rc2-stamp">THANK<br>YOU ♥</div></div>`}
 const bf=document.getElementById('bigFlower'),rb=document.getElementById('reportBox');
 bf.onclick=()=>{
